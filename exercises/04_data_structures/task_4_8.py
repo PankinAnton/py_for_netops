@@ -26,3 +26,10 @@ this stage it is difficult otherwise test the result.
 """
 
 ip = "192.168.3.1"
+ip = ip.split(".")
+
+output = "{:<9}{:<9}{:<9}{:<9}"
+output_bin = "{:08b} {:08b} {:08b} {:08b}"
+    
+print(output.format(ip[0],ip[1],ip[2],ip[3]))
+print(output_bin.format(int(ip[0]),int(ip[1]),int(ip[2]),int(ip[3])))
