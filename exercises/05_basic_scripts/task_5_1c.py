@@ -50,7 +50,6 @@ london_co = {
 user_input_name = input("Enter device name:")
 user_input_dev = london_co[user_input_name]
 dev_keys = ', '.join(user_input_dev.keys())
-print(dev_keys)
 user_input_param = input("Enter parameter name (" + (dev_keys)+"):")
 user_input_param_check = user_input_dev.get(user_input_param, "There is no such parameter")
 print(user_input_param_check)

@@ -52,6 +52,6 @@ london_co = {
 }
 user_input_name = input("Enter device name:")
 dev_keys = ', '.join(london_co[user_input_name].keys())
-print(dev_keys)
+
 user_input_param = input("Enter parameter name (" + (dev_keys)+"):")
 print(london_co[user_input_name][user_input_param])
