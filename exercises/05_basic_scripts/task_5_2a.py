@@ -41,3 +41,27 @@ Then the network address will be the first 28 characters from bin_ip + 0000
 Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 """
+
+ip = input("Enter the IP network in the format 10.1.1.0/24:")
+ip_mask = ip[ip.find('/')::]
+ip_mask_max = 32
+ip_mask_empty = int(ip_mask_max) - int(ip_mask.replace("/",""))
+ip_mask_bin = "1" * int(ip_mask.replace("/","")) + "0" * ip_mask_empty
+mask_ost1, mask_ost2, mask_ost3, mask_ost4 = ip_mask_bin[:8], ip_mask_bin[8:16], ip_mask_bin[16:24], ip_mask_bin[24:]
+mask_ost1_dect, mask_ost2_dect, mask_ost3_dect, mask_ost4_dect = int(mask_ost1, 2), int(mask_ost2, 2), int(mask_ost3, 2), int(mask_ost4, 2)
+
+oct1, oct2, oct3, oct4 = list(ip.replace(ip_mask,"").split("."))
+ip_bin = '{:08b}{:08b}{:08b}{:08b}'.format(int(oct1), int(oct2), int(oct3), int(oct4))
+ip_net_bin=ip_bin[0:int(ip_mask.replace("/",""))] + "0" * ip_mask_empty
+ip_net_bin1, ip_net_bin2, ip_net_bin3, ip_net_bin4 = ip_net_bin[:8], ip_net_bin[8:16], ip_net_bin[16:24], ip_net_bin[24:]
+ip_net_bin1_dect, ip_net_bin2_dect, ip_net_bin3_dect, ip_net_bin4_dect = int(ip_net_bin1, 2), int(ip_net_bin2, 2), int(ip_net_bin3, 2), int(ip_net_bin4, 2)
+
+mask_template = '''{0:<8} {1:<8} {2:<8} {3:<8}'''
+print("Network:")
+print(mask_template.format(ip_net_bin1_dect, ip_net_bin2_dect, ip_net_bin3_dect, ip_net_bin4_dect))
+print(ip_net_bin1, ip_net_bin2, ip_net_bin3, ip_net_bin4)
+
+print("\nMask:")
+print(ip_mask)
+print(mask_template.format(mask_ost1_dect, mask_ost2_dect, mask_ost3_dect, mask_ost4_dect))
+print (mask_ost1, mask_ost2, mask_ost3, mask_ost4)
