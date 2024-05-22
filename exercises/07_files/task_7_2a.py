@@ -16,4 +16,11 @@ Restriction: All tasks must be done using the topics covered in this and previou
 
 """
 
+f = input("Введите имя файла:")
 ignore = ["duplex", "alias", "configuration"]
+
+with open(f, 'r', encoding="utf-8")as f:
+    for line in f:
+        lines = line.strip('!').strip().strip("\n")
+        if lines != '' and not any(word in lines for word in ignore):
+            print(lines)

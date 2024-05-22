@@ -20,3 +20,11 @@ the following table was printed on the stdout:
 Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 """
+result = {}
+
+with open('exercises\\07_files\\CAM_table.txt') as f:
+    for line in f:
+        line = line.split()
+        if line and line[0][1].isdigit():
+            Vlan, address, types, port, *other=line
+            print('{:10}{:20}{:}'.format(Vlan, address, port))

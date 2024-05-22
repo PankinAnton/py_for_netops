@@ -17,4 +17,13 @@ Restriction: All tasks must be done using the topics covered in this and previou
 
 """
 
+
+s = input("Name of the source configuration file:")
+d = input("Name of the destination configuration file:")
 ignore = ["duplex", "alias", "configuration"]
+
+with open(s, 'r', encoding="utf-8")as s, open(d, 'w')as d:
+    for line in s:
+        lines = line.strip('!').strip().strip("\n")
+        if lines != '' and not any(word in lines for word in ignore):
+            d.write(lines + '\n')

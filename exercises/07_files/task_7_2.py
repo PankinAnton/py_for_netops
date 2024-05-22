@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Task 7.2
 
@@ -40,3 +39,10 @@ interface Ethernet0/3
 ...
 
 """
+f = open('exercises\\07_files\\config_sw1.txt', 'r', encoding="utf-8")
+for line in f:
+        line = line.strip('!').strip().strip("\n")
+        if line != '':
+              print(line)
+
+    
