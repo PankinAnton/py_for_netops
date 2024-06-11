@@ -40,3 +40,15 @@ if you sort list of lists above.
 Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 """
+result = {}
+sorted_list = []
+
+with open('exercises\\07_files\\CAM_table.txt') as f:
+    for line in f:
+        line = line.split()
+        if line and line[0][1].isdigit():
+            Vlan, address, types, port, *other=line
+            sorted_list.append([int(Vlan), address, port])
+
+for Vlan, address, port in sorted(sorted_list):
+    print(f"{Vlan:<9}{address:20}{port}")

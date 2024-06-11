@@ -27,4 +27,5 @@ with open('exercises\\07_files\\CAM_table.txt') as f:
         line = line.split()
         if line and line[0][1].isdigit():
             Vlan, address, types, port, *other=line
-            print('{:10}{:20}{:}'.format(Vlan, address, port))
+            result = '{:10}{:20}{:}'.format(Vlan, address, port)
+            print(result)

@@ -17,3 +17,13 @@ Enter VLAN number: 10
 Restriction: All tasks must be done using the topics covered in this and previous chapters.
 
 """
+uvlan = input("Enter VLAN number:")
+result = {}
+
+with open('exercises\\07_files\\CAM_table.txt') as f:
+    for line in f:
+        line = line.split()
+        if line and line[0][1].isdigit() and line[0] == uvlan:
+            Vlan, address, types, port, *other=line
+            result = '{:10}{:20}{:}'.format(Vlan, address, port)
+            print(result)
