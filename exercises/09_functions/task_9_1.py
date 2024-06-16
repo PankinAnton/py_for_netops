@@ -64,12 +64,15 @@ access_config_2 = {
 
 
 def generate_access_config(intf_vlan_mapping, access_template):
-    """
-    intf_vlan_mapping is a dictionary with interface-VLAN mapping:
-         {'FastEthernet0/12': 10,
-          'FastEthernet0/14': 11,
-          'FastEthernet0/16': 17}
-    access_template - list of commands for the port in access mode
+    lines = []
+    for int, vlan in intf_vlan_mapping.items():
+        lines.append(f"interface {int}")
+        for command in access_template:
+            if command.endswith("vlan"):
+                lines.append(f"{command} {vlan}")
+            else:
+                lines.append(command)
+    return lines
 
-    Returns a list of commands.
-    """
+print(generate_access_config(access_config, access_mode_template))
+print(generate_access_config(access_config_2, access_mode_template))
