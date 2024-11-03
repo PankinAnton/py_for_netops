@@ -45,6 +45,21 @@ in test_task_9_4.py test):
 Restriction: All tasks must be done using the topics covered in this and previous chapters.
 """
 
+def convert_config_to_dict(config_filename):
+    config_dict = {}
+    curr_command = None
+    with open(config_filename, 'r') as f:
+        for line in f:
+            line = line.strip()
+            if line.startswith('!') or ignore_command(line, ignore):
+                continue
+            if not line.startswith(" "):
+                current_command = line
+                config_dict[current_command] = []
+            else:
+                if current_command:  
+                    config_dict[current_command].append(line)
+    return config_dict
 ignore = ["duplex", "alias", "configuration"]
 
 
@@ -64,3 +79,4 @@ def ignore_command(command, ignore):
         if word in command:
             ignore_status = True
     return ignore_status
+access, trunk = get_int_vlan_map('/Users/antonpankin/Documents/GitHub/py_for_netops/exercises/09_functions/config_sw2.txt')
